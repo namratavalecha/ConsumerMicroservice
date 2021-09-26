@@ -14,6 +14,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ConsumerMicroservice.DataLayer;
 
 namespace ConsumerMicroservice
 {
@@ -44,19 +45,22 @@ namespace ConsumerMicroservice
                 });
             });
 
-    //   services.AddCors(c => c.AddPolicy("PolicyAdministrationSystem", builder =>
-    //   {
-    //     builder.AllowAnyOrigin();
-    //     builder.AllowAnyMethod();
-    //     builder.AllowAnyHeader();
-    //   }));
+            //services.AddCors(c => c.AddPolicy("pod_2_policy", builder =>
+            //{
+            //    builder.AllowAnyOrigin();
+            //    builder.AllowAnyMethod();
+            //    builder.AllowAnyHeader();
+            //}));
 
 
-    }
+        }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            // var scope = app.ApplicationServices.CreateScope();
+            // var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+            // AddData.Initialize(context);
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -65,7 +69,7 @@ namespace ConsumerMicroservice
             app.UseSwaggerUI(options => options.SwaggerEndpoint("/swagger/v2/swagger.json", "Consumer MicroService"));
 
             app.UseHttpsRedirection();
-            // app.UseCors("PolicyAdministrationSystem");
+            //app.UseCors("pod_2_policy");
 
 
             app.UseRouting();
