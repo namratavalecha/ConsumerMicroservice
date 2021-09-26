@@ -1,0 +1,101 @@
+{
+  "format": 1,
+  "restore": {
+    "/home/namrata/dotnet/PolicyAdministrationSystem/ConsumerMicroservice/ConsumerMicroservice.csproj": {}
+  },
+  "projects": {
+    "/home/namrata/dotnet/PolicyAdministrationSystem/ConsumerMicroservice/ConsumerMicroservice.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/namrata/dotnet/PolicyAdministrationSystem/ConsumerMicroservice/ConsumerMicroservice.csproj",
+        "projectName": "ConsumerMicroservice",
+        "projectPath": "/home/namrata/dotnet/PolicyAdministrationSystem/ConsumerMicroservice/ConsumerMicroservice.csproj",
+        "packagesPath": "/home/namrata/.nuget/packages/",
+        "outputPath": "/home/namrata/dotnet/PolicyAdministrationSystem/ConsumerMicroservice/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/namrata/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.17, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.1.17, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[3.1.17, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.1.17, )"
+            },
+            "Microsoft.Extensions.Logging.Log4Net.AspNetCore": {
+              "target": "Package",
+              "version": "[3.1.5, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.1.5, )"
+            },
+            "TypeMerger": {
+              "target": "Package",
+              "version": "[2.1.1, )"
+            },
+            "log4net": {
+              "target": "Package",
+              "version": "[2.0.12, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/5.0.401/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
