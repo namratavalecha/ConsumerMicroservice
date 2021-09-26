@@ -18,40 +18,39 @@ namespace ConsumerMicroservice.Service
 
         public bool CreateConsumerBusiness(ConsumerBusiness consumerBusiness)
         {
-            _consumerRepository = new ConsumerRepository();
+            //_consumerRepository = new ConsumerRepository();
             return _consumerRepository.CreateConsumerBusiness(consumerBusiness);
         }
 
         public bool UpdateConsumerBusiness(ConsumerBusiness consumerBusiness)
         {
-            _consumerRepository = new ConsumerRepository();
+            //_consumerRepository = new ConsumerRepository();
             return _consumerRepository.UpdateConsumerBusiness(consumerBusiness);
         }
 
         public bool CreateBusinessProperty(BusinessProperty businessProperty)
         {
-            _consumerRepository = new ConsumerRepository();
+            //_consumerRepository = new ConsumerRepository();
             return _consumerRepository.CreateBusinessProperty(businessProperty);
         }
 
         public bool UpdateBusinessProperty(BusinessProperty businessProperty)
         {
-            _consumerRepository = new ConsumerRepository();
+            //_consumerRepository = new ConsumerRepository();
             return _consumerRepository.UpdateBusinessProperty(businessProperty);
         }
 
         public ConsumerBusinessDetails ViewConsumerBusiness(string ConsumerId, string BusinessId)
         {
-            _consumerRepository = new ConsumerRepository();
+            //_consumerRepository = new ConsumerRepository();
             return _consumerRepository.ViewConsumerBusiness(ConsumerId, BusinessId);
         }
 
         public BusinessPropertyDetails ViewConsumerProperty(string ConsumerId, string PropertyId)
         {
-            _consumerRepository = new ConsumerRepository();
+            //_consumerRepository = new ConsumerRepository();
             return _consumerRepository.ViewConsumerProperty(ConsumerId, PropertyId);
         }
 
     }
 }
-

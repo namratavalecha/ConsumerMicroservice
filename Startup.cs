@@ -44,12 +44,12 @@ namespace ConsumerMicroservice
                 });
             });
 
-      services.AddCors(c => c.AddPolicy("PolicyAdministrationSystem", builder =>
-      {
-        builder.AllowAnyOrigin();
-        builder.AllowAnyMethod();
-        builder.AllowAnyHeader();
-      }));
+    //   services.AddCors(c => c.AddPolicy("PolicyAdministrationSystem", builder =>
+    //   {
+    //     builder.AllowAnyOrigin();
+    //     builder.AllowAnyMethod();
+    //     builder.AllowAnyHeader();
+    //   }));
 
 
     }
@@ -65,7 +65,7 @@ namespace ConsumerMicroservice
             app.UseSwaggerUI(options => options.SwaggerEndpoint("/swagger/v2/swagger.json", "Consumer MicroService"));
 
             app.UseHttpsRedirection();
-            app.UseCors("PolicyAdministrationSystem");
+            // app.UseCors("PolicyAdministrationSystem");
 
 
             app.UseRouting();

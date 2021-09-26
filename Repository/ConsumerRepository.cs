@@ -10,11 +10,11 @@ namespace ConsumerMicroservice.Repository
 {
     public class ConsumerRepository : IConsumerRepository
     {
-        //private readonly ApplicationDbContext _db = null;
-        //public ConsumerRepository(ApplicationDbContext db)
-        //{
-        //    _db = db;
-        //}
+        private readonly ApplicationDbContext _db = null;
+        public ConsumerRepository(ApplicationDbContext db)
+        {
+            _db = db;
+        }
         private readonly log4net.ILog _log4net = log4net.LogManager.GetLogger(typeof(ConsumerRepository));
 
        
@@ -37,9 +37,9 @@ namespace ConsumerMicroservice.Repository
                 UsefulLifeOfTheAsset = businessProperty.UsefulLifeOfTheAsset,
             };
 
-            PropertyData.PropertyList.Add(property);
-            //_db.properties.Add(property);
-            //_db.SaveChanges();
+            //PropertyData.PropertyList.Add(property);
+            _db.properties.Add(property);
+            _db.SaveChanges();
             return true;
         }
 
@@ -69,11 +69,11 @@ namespace ConsumerMicroservice.Repository
                 TotalEmployees = consumerBusiness.TotalEmployees,
                 CapitalInvested = consumerBusiness.CapitalInvested
             };
-            //_db.consumers.Add(consumer);
-            //_db.businesses.Add(business);
-            //_db.SaveChanges();
-            ConsumerData.ConsumerList.Add(consumer);
-            BusinessData.BusinessList.Add(business);
+            _db.consumers.Add(consumer);
+            _db.businesses.Add(business);
+            _db.SaveChanges();
+            //ConsumerData.ConsumerList.Add(consumer);
+            //BusinessData.BusinessList.Add(business);
             
             return true;
 
@@ -81,23 +81,23 @@ namespace ConsumerMicroservice.Repository
 
         public Consumer GetConsumerById(string id)
         {
-            //Consumer consumer =  _db.consumers.Where(t => t.ConsumerId == id).FirstOrDefault();
-           Consumer consumer = ConsumerData.ConsumerList.FirstOrDefault(c => c.ConsumerId.Equals(id));
-           return consumer;
+            Consumer consumer = _db.consumers.Where(t => t.ConsumerId == id).FirstOrDefault();
+            //Consumer consumer = ConsumerData.ConsumerList.FirstOrDefault(c => c.ConsumerId.Equals(id));
+            return consumer;
         }
 
         public Business GetBusinessById(string id)
         {
-            Business business = BusinessData.BusinessList.FirstOrDefault(b => b.BusinessId.Equals(id));
-           // Business business = _db.businesses .Where(t => t.BusinessId == id).FirstOrDefault();
+            //Business business = BusinessData.BusinessList.FirstOrDefault(b => b.BusinessId.Equals(id));
+            Business business = _db.businesses.Where(t => t.BusinessId == id).FirstOrDefault();
             return business;
         }
 
         public Property GetPropertyById(string id)
         {
-          Property property = PropertyData.PropertyList.FirstOrDefault(p => p.PropertyId.Equals(id));
-          //Property property = _db.properties.Where(t => t.PropertyId == id).FirstOrDefault();
-          return property;
+            //Property property = PropertyData.PropertyList.FirstOrDefault(p => p.PropertyId.Equals(id));
+            Property property = _db.properties.Where(t => t.PropertyId == id).FirstOrDefault();
+            return property;
         }
 
         public bool UpdateBusinessProperty(BusinessProperty businessProperty)
@@ -123,12 +123,12 @@ namespace ConsumerMicroservice.Repository
             {
                 return false;
             }
-            PropertyData.PropertyList.Remove(deleteProperty);
-            PropertyData.PropertyList.Add(updateProperty);
-           
-            //_db.properties.Remove(deleteProperty);
-            //_db.properties.Add(updateProperty);
-            //_db.SaveChanges();
+            //PropertyData.PropertyList.Remove(deleteProperty);
+            //PropertyData.PropertyList.Add(updateProperty);
+
+            _db.properties.Remove(deleteProperty);
+            _db.properties.Add(updateProperty);
+            _db.SaveChanges();
             return true;
 
         }
@@ -166,16 +166,16 @@ namespace ConsumerMicroservice.Repository
             {
                 return false;
             }
-           
-            ConsumerData.ConsumerList.Remove(deleteConsumer);
-            BusinessData.BusinessList.Remove(deleteBusiness);
-            ConsumerData.ConsumerList.Add(updateConsumer);
-            BusinessData.BusinessList.Add(updatebusiness);
-            //_db.consumers.Remove(deleteConsumer);
-            //_db.businesses.Remove(deleteBusiness);
-            //_db.consumers.Add(updateConsumer);
-            //_db.businesses.Add(updatebusiness);
-            //_db.SaveChanges();
+
+            //ConsumerData.ConsumerList.Remove(deleteConsumer);
+            //BusinessData.BusinessList.Remove(deleteBusiness);
+            //ConsumerData.ConsumerList.Add(updateConsumer);
+            //BusinessData.BusinessList.Add(updatebusiness);
+            _db.consumers.Remove(deleteConsumer);
+            _db.businesses.Remove(deleteBusiness);
+            _db.consumers.Add(updateConsumer);
+            _db.businesses.Add(updatebusiness);
+            _db.SaveChanges();
             return true;
         }
 
