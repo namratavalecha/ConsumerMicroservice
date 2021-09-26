@@ -38,8 +38,6 @@ namespace ConsumerMicroservice.Controllers
             var request = new HttpRequestMessage(HttpMethod.Post, "https://authmicroservicepas.azurewebsites.net/api/Auth/Verify");
 
             HttpResponseMessage response = await client.SendAsync(request);
-
-
             return response;
 
         }
@@ -47,6 +45,8 @@ namespace ConsumerMicroservice.Controllers
         [Route("CreateConsumerBusiness")]
         public async Task<IActionResult> CreateConsumerBusiness(ConsumerBusiness consumerBusiness, [FromHeader] string authorization)
         {
+            if(authorization == null)
+                return Unauthorized("Please provide token");
             if (AuthenticationHeaderValue.TryParse(authorization, out var headerValue))
             {
                 var rslt = await CheckTokenValidity(headerValue.Scheme, headerValue.Parameter);
@@ -64,6 +64,8 @@ namespace ConsumerMicroservice.Controllers
         [Route("UpdateConsumerBusiness")]
         public async Task<IActionResult> UpdateConsumerBusiness(ConsumerBusiness consumerBusiness, [FromHeader] string authorization)
         {
+            if(authorization == null)
+                return Unauthorized("Please provide token");
 
             if (AuthenticationHeaderValue.TryParse(authorization, out var headerValue))
             {
@@ -83,6 +85,8 @@ namespace ConsumerMicroservice.Controllers
         [Route("CreateBusinessProperty")]
         public async Task<IActionResult> CreateBusinessProperty(BusinessProperty businessProperty, [FromHeader] string authorization)
         {
+            if(authorization == null)
+                return Unauthorized("Please provide token");
             if (AuthenticationHeaderValue.TryParse(authorization, out var headerValue))
             {
                 var rslt = await CheckTokenValidity(headerValue.Scheme, headerValue.Parameter);
@@ -101,6 +105,8 @@ namespace ConsumerMicroservice.Controllers
         [Route("UpdateBusinessProperty")]
         public async Task<IActionResult> UpdateBusinessProperty(BusinessProperty businessProperty, [FromHeader] string authorization)
         {   
+            if(authorization == null)
+                return Unauthorized("Please provide token");
             if (AuthenticationHeaderValue.TryParse(authorization, out var headerValue))
             {
                 var rslt = await CheckTokenValidity(headerValue.Scheme, headerValue.Parameter);
@@ -119,6 +125,8 @@ namespace ConsumerMicroservice.Controllers
         [Route("viewConsumerBusiness/{ConsumerId}/{BusinessId}")]
         public async Task<IActionResult> ViewConsumerBusiness(string ConsumerId, string BusinessId, [FromHeader] string authorization)
         {
+            if(authorization == null)
+                return Unauthorized("Please provide token");
             if (AuthenticationHeaderValue.TryParse(authorization, out var headerValue))
             {
                 var rslt = await CheckTokenValidity(headerValue.Scheme, headerValue.Parameter);
@@ -141,6 +149,10 @@ namespace ConsumerMicroservice.Controllers
         [Route("viewConsumerProperty/{ConsumerId}/{PropertyId}")]
         public async Task<IActionResult> ViewConsumerProperty(string ConsumerId,string PropertyId, [FromHeader] string authorization)
         {
+            if(authorization == null){
+                _log4net.Info("auth is null");
+                return Unauthorized("Please provide token");
+            }
             if (AuthenticationHeaderValue.TryParse(authorization, out var headerValue))
             {
                 var rslt = await CheckTokenValidity(headerValue.Scheme, headerValue.Parameter);
