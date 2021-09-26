@@ -35,7 +35,7 @@ namespace ConsumerMicroservice.Controllers
             var client = _clientFactory.CreateClient();
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
-            var request = new HttpRequestMessage(HttpMethod.Post, "https://authmicroservicepas.azurewebsites.net/api/Auth/Login");
+            var request = new HttpRequestMessage(HttpMethod.Post, "https://authmicroservicepas.azurewebsites.net/api/Auth/Verify");
 
             HttpResponseMessage response = await client.SendAsync(request);
 
