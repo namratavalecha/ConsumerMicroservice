@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: consumermicroservice-deployment
+  labels:
+    app: ConsumerMicroservicePAS
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ConsumerMicroservicePAS	  
+  template:
+    metadata:
+      labels:
+        app: ConsumerMicroservicePAS
+    spec:
+      containers:
+      - name: consumermicroserviepas
+        image: authmicroservicecr.azurecr.io/authmicroservicepas:latest
+        ports:
+        - containerPort: 8080
+      imagePullSecrets:
+      - name: consumersecret
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: consumermicroserviepasservice
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+  selector:
+    app: ConsumerMicroservicePAS
