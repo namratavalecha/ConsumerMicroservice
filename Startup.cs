@@ -36,7 +36,7 @@ namespace ConsumerMicroservice
             services.AddHttpClient();
             services.AddControllers();
             services.AddDbContext<ApplicationDbContext>(options =>
-              options.UseSqlServer("Server=tcp:policyadministration.database.windows.net,1433;Initial Catalog=PolicyAdministration;Persist Security Info=False;User ID=namrata;Password=admin@123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"));
+              options.UseSqlServer("Server=tcp:mftepas.database.windows.net,1433;Initial Catalog=PolicyAdministrationSystem;Persist Security Info=False;User ID=mftepas;Password=project#123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"));
             services.AddSwaggerGen(options =>
             {
                 options.SwaggerDoc("v2", new Microsoft.OpenApi.Models.OpenApiInfo
@@ -45,12 +45,12 @@ namespace ConsumerMicroservice
                 });
             });
 
-            //services.AddCors(c => c.AddPolicy("pod_2_policy", builder =>
-            //{
-            //    builder.AllowAnyOrigin();
-            //    builder.AllowAnyMethod();
-            //    builder.AllowAnyHeader();
-            //}));
+            services.AddCors(c => c.AddPolicy("pod_2_policy", builder =>
+            {
+               builder.AllowAnyOrigin();
+               builder.AllowAnyMethod();
+               builder.AllowAnyHeader();
+            }));
 
 
         }
@@ -69,7 +69,7 @@ namespace ConsumerMicroservice
             app.UseSwaggerUI(options => options.SwaggerEndpoint("/swagger/v2/swagger.json", "Consumer MicroService"));
 
             app.UseHttpsRedirection();
-            //app.UseCors("pod_2_policy");
+            app.UseCors("pod_2_policy");
 
 
             app.UseRouting();
