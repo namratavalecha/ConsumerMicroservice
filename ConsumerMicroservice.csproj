@@ -35,5 +35,12 @@
     <PackageReference Include="TypeMerger" Version="2.1.1" />
   </ItemGroup>
 
+  
+  <ItemGroup>
+      <None Include="Deployment.yaml">
+          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+  </ItemGroup>
+
 
 </Project>
